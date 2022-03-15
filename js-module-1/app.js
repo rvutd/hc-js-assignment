@@ -40,3 +40,22 @@ for (let j = 0; j < arr.length-1; j++){
 
 console.log("Prime Numbers", primeNumbers);
 
+// 4. Provided the following  array:
+// [0, 2, 4, 6, 8, 10, 12, 14, 16]
+// Generate and print another list such that: 
+// a. every element being twice of elements in the current list.
+// b. every element being half of the elements in the current list.
+
+const numList = [0, 2, 4, 6, 8, 10, 12, 14, 16]
+const halfList = []
+const twiceList = []
+
+// a.
+numList.forEach((num) => twiceList.push(num*2));
+console.log("Twice List = ", twiceList);
+
+// b. 
+numList.forEach((num) => halfList.push(num/2));
+console.log("Half List = ", halfList);
+
+
