@@ -29,3 +29,27 @@ const primeFilter = task3.filter(ifPrime);
 console.log("Odd by Filter", oddFilter);
 console.log("Even by Filter", evenFilter);
 console.log("Prime by Filter", primeFilter);
+
+// 4. Provided the following  array:
+//     [0, 2, 4, 6, 8, 10, 12, 14, 16]
+// Generate and print another list such that: 
+//  a. every element being twice of elements in the current list.
+//  b. every element being half of the elements in the current list.
+
+const task4 = [0, 2, 4, 6, 8, 10, 12, 14, 16]
+console.log("Task 4 list:", task4);
+
+
+// task a - twice
+const twiceNum = task4.map(value => {
+    value = value * 2;
+    return value
+})
+
+console.log("twice of each number: ", twiceNum);
+
+// Task b - Half of every element
+const halfNum = task4.map(value => value/2)
+console.log("Half Num:", halfNum);
+
+
