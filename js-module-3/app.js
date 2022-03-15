@@ -79,3 +79,15 @@ const nameStartsR = personData.filter((per) => {
 
 console.log("Names which start with A are:", nameStartsA);
 console.log("Names which start with R are:", nameStartsR);
+
+// Task 2:
+// Program 1:
+a = 10;
+console.log(a);
+var a;
+
+// Program 2:
+// b = 5;
+// console.log(b);
+// let b;
+// ReferenceError: Cannot access 'b' before initialization
