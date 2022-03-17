@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Module 4</title>
+</head>
+<body>
+    <h1>JS Module 4</h1>
+
+    <script>
+        const person = {
+            fname: 'Cristiano',
+            lname: 'Ronaldo',
+            age: 35
+        }
+
+        // Method 1:
+        const clonePerson = JSON.parse(JSON.stringify(person));
+
+        // Method 2:
+        // const clonePerson = Object.assign(person);
+
+        // Changing Values Does'nt affect the original one -
+        person.fname = 'Leo';
+        person.lname = 'Messi';
+        person.age = 32;
+
+        console.log("Person obj:", person);
+        console.log("Clone Person obj:", clonePerson);   
+    </script>
+</body>
+</html>
