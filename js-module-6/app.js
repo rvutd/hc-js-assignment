@@ -5,6 +5,7 @@ nameColElements.forEach(element => {
     element.addEventListener('click', () => {
         nameColElements.forEach(colElement => {
             colElement.classList.toggle('change');
+
         })
     })
 })
