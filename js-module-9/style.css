@@ -8,8 +8,19 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.card {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 2rem;
+}
+
 .flex {
     display: flex;
+    align-items: center;
+}
+
+.grid {
+    display: grid;
+    justify-content: center;
     align-items: center;
 }
 
@@ -74,6 +85,38 @@ i {
     color: red;
 }
 
+/* Fake store */
+.fakeStore {
+    margin: 5rem auto;
+    color: #333;
+}
+
+.fakeStore .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 40px;
+    gap: 10px;
+}
+
+.fakeStore .card {
+    max-width: 350px;
+}
+
+.fakeStore img {
+    width: 100%;
+    border-radius: 0;
+    border: none;
+    height: 300px;
+    padding: 1rem 0;
+}
+
+.price, .Itemcategory {
+    color: #fff;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    text-align: center;
+    background: #0275d8;
+}
 
 /* Footer */
 footer {
