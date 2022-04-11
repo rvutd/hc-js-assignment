@@ -4,10 +4,11 @@
       <div class="relative">
         <h1>Flipkart</h1>
         <!-- Home View -->
-        <router-link :to="{ name: 'home' }"
-          ><a href="#" class="plus flex"
-            >Explore <span>Plus</span>
-            <img src="../assets/flip.png" alt="" /></a
+        <router-link :to="{ name: 'home' }">
+            <a href="#" class="plus flex">
+              Explore <span>Plus</span>
+              <img src="../assets/flip.png" alt="" />
+            </a
         ></router-link>
       </div>
       <div class="search-div relative">
@@ -24,7 +25,9 @@
           </li>
           <li><a href="#">Become a Seller</a></li>
           <li>
-            <a href="#">More</a>
+            <router-link :to="{ name: 'categories' }"
+              ><a href="#">More</a>
+            </router-link>
           </li>
           <li>
             <a href="#"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
