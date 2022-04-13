@@ -41,10 +41,6 @@ export default {
 
 <style scoped>
 /* Utilities */
-section {
-  margin-top: 4.4rem;
-}
-
 .primary-btn {
   font-weight: normal;
   padding: 12px 20px;
@@ -105,5 +101,9 @@ section {
   height: 160px;
   width: 155px;
   object-fit: contain;
+}
+
+router-link {
+  color: #fff;
 }
 </style>
