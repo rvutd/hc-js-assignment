@@ -13,12 +13,16 @@
             <div class="flex">
               <h3>{{ Product.title }}</h3>
               <div class="flex" v-if="Product.timer">
-                <img class="timer-img" src="../assets/timer.svg" alt="" />
+                <img class="timer-img" src="../assets/timer.svg" alt="Timer Image" />
                 <p class="timer"></p>
               </div>
             </div>
             <div>
-              <button class="primary-btn">View All</button>
+              <button class="primary-btn">
+                <router-link :to="{ name: 'categories' }">
+                  <p>View All</p>
+                </router-link>
+              </button>
             </div>
           </div>
           <Product class="flex" :Product="Product.items" />
@@ -149,5 +153,9 @@ img {
 .timer-img {
   width: 30px;
   margin-right: 13px;
+}
+
+.primary-btn p {
+  color: #fff;
 }
 </style>

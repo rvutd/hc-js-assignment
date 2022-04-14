@@ -13,8 +13,8 @@
       <!-- Product Item -->
       <div class="flex">
             <div v-for="product in productData" :key="product.id">
-                <div class="items flex" v-if="category === product.category">
-                    <div>
+                <div class="items flex" v-if="category === product.category" >
+                    <div @click="sendProductDetails(product.id)">
                         <a href="#" class="items-card">
                             <img :src="product.image" alt="Item Image" />
                             <h3>{{product.title}}</h3>
@@ -36,15 +36,20 @@ export default {
     productData: Array,
     categories: Array,
   },
+  methods: {
+    sendProductDetails(productId) {
+      
+      this.$router.push({
+        name: 'ProductDetailsView',
+        params: {productId},
+      })
+    }
+  }
 };
 </script>
 
 <style scoped>
 /* Utilities */
-section {
-  margin-top: 4.4rem;
-}
-
 .primary-btn {
   font-weight: normal;
   padding: 12px 20px;
@@ -105,5 +110,9 @@ section {
   height: 160px;
   width: 155px;
   object-fit: contain;
+}
+
+router-link {
+  color: #fff;
 }
 </style>
