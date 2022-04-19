@@ -21,6 +21,8 @@
 
 
 <script>
+    import axios from 'axios'
+
   export default {
     name: 'Login',
     data() {
@@ -28,6 +30,20 @@
             userName: this.userName,
             passkey: this.passkey,
         }
+    },
+    mounted() {
+        axios.interceptors.request.use(config => {
+            config.headers = {
+                "Accept": "*/*",
+                "Content-Type": 'application/json',
+            }
+                
+            return config
+        },
+        err => {
+            console.log(err)
+            return err    
+        })
     },
     methods: {
         // Authenticate User
@@ -44,21 +60,15 @@
             const token = await this.authenticateUser(obj)
             // Save Token to local -
             this.saveTokeToLocalStorage(token)
-            
+            // Redirect to Client -
+            this.$router.push({name: 'ClientView'})
         },
         // Gets Token
         async authenticateUser(obj) {
-           const response = await fetch('https://fakestoreapi.com/auth/login',{
-                method:'POST',
-                body:JSON.stringify(obj),
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "*/*",
-                }
-            })
 
-            const token = await response.json()
-            return token
+            const {data} = await axios.post('https://fakestoreapi.com/auth/login', JSON.stringify(obj))
+
+            return data
         },
         saveTokeToLocalStorage(token){
             localStorage.setItem('User Token', JSON.stringify(token))
