@@ -4,16 +4,16 @@
             <h1>Welcome Back!</h1>
         </div>
         <div>
-            <form onsubmit="#">
+            <form>
                 <div>
                     <label for="User Id">User Id:</label> <br>
-                    <input type="email" v-model="email">
+                    <input type="text" v-model="userName" placeholder="mor_2314">
                 </div>
                 <div>
                     <label for="Password">Password</label> <br>
-                    <input type="password" v-model="password">
+                    <input type="password" v-model="passkey" placeholder="83r5^_">
                 </div>
-                <input type="submit" @click="autherizedUser">
+                <input type="submit" @click="loginAuth">
             </form>
         </div>
     </div>
@@ -25,8 +25,43 @@
     name: 'Login',
     data() {
         return {
-            email: this.email,
-            password: this.password,
+            userName: this.userName,
+            passkey: this.passkey,
+        }
+    },
+    methods: {
+        // Authenticate User
+        async loginAuth(e) {
+            e.preventDefault();
+            console.log(this.userName, this.passkey);
+
+            const obj = {
+                    username: this.userName,
+                    password: this.passkey,
+            }
+
+            // Get Token if user is registered -
+            const token = await this.authenticateUser(obj)
+            // Save Token to local -
+            this.saveTokeToLocalStorage(token)
+            
+        },
+        // Gets Token
+        async authenticateUser(obj) {
+           const response = await fetch('https://fakestoreapi.com/auth/login',{
+                method:'POST',
+                body:JSON.stringify(obj),
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "*/*",
+                }
+            })
+
+            const token = await response.json()
+            return token
+        },
+        saveTokeToLocalStorage(token){
+            localStorage.setItem('User Token', JSON.stringify(token))
         }
     },
   }
@@ -48,7 +83,7 @@
         font-size: 20px;
         font-weight: bold;
     }
-    input[type=email], input[type=password] {
+    input[type=text], input[type=password] {
         width: 100%;
         padding: 12px 20px;
         margin: 8px 0;

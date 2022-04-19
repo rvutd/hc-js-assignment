@@ -77,6 +77,47 @@
                 zipcode: this.zipcode,
             }
         },
+        methods: {
+            registerUser(e) {
+                e.preventDefault();
+
+                const personData = {
+                    email: this.email,
+                    username: this.username,
+                    password: this.password,
+                    name: {
+                        firstname: this.firstname,
+                        lastname: this.lastName,
+                    },
+                    address: {
+                        city: this.city,
+                        street: this.street,
+                        number: 309,
+                        zipcode: this.zipcode,
+                        geolocation: {
+                            lat: '-37.3159',
+                            long: '81.1496',
+                        }
+                    },
+                    phone: this.phoneNumber
+                }
+
+                this.registerNewUser(personData)
+            },
+            async registerNewUser(personData) {
+                const respone = await fetch('https://fakestoreapi.com/users',{
+                    method: 'POST',
+                    body: JSON.stringify(personData),
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "*/*",
+                    }
+                })
+
+                const dataRegistered = await respone.json()
+                console.log(dataRegistered);
+            }
+        }
     }
 </script>
 
