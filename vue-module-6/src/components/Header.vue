@@ -6,15 +6,17 @@
                     <li>
                         <h1>iCloudStore</h1>
                     </li>
-                    <li><a href="#" @click="this.$router.push({ name: 'home' })">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#price">Pricing</a></li>
-                    <li><a href="#price" @click="this.$router.push({ name: 'ClientView' })">Client</a></li>
+                    <li><a href="#" @click="this.$router.push({ name: 'home' })">{{ $t('home') }}</a></li>
+                    <li><a href="#features">{{ $t('features') }}</a></li>
+                    <li><a href="#price">{{ $t('pricing') }}</a></li>
+                    <li><a href="#price" @click="this.$router.push({ name: 'ClientView' })">{{ $t('client') }}</a></li>
                 </ul>
             </nav>
             <nav class="right">
-                <button class="primary" @click="this.$router.push({ name: 'login' })">Sign In</button>
-                <button class="btn-primary" @click="this.$router.push({name: 'registration'})">Get Started</button>
+                <button class="primary" @click="this.$router.push({ name: 'login' })">{{ $t('signIn') }}</button>
+                <button class="btn-primary" @click="this.$router.push({name: 'registration'})">{{ $t('getStarted')}}</button>
+                <button class="btn-primary blue" @click="$i18n.locale = 'en'">{{ $t('english')}}</button>
+                <button class="btn-primary blue" @click="$i18n.locale = 'hi'">{{ $t('hindi')}}</button>
             </nav>
         </div>
     </header>
@@ -61,5 +63,10 @@
 
     .navBar button {
         margin: 0.3rem;
+    }
+
+    .blue {
+        background: #0275d8;
+        color: #fff;
     }
 </style>
