@@ -12,7 +12,7 @@
                 </ul>
             </nav>
             <nav class="right">
-                <button class="primary">Profile</button>
+                <button class="primary" @click="something">Profile</button>
                 <button class="btn-primary">Logout</button>
             </nav>
         </div>
@@ -20,8 +20,43 @@
 </template>
 
 <script>
+    import axios from 'axios'
+    import { setupCache } from 'axios-cache-adapter'
+
+
     export default {
         name: 'ClientHeader',
+        mounted() {
+            // Create `axios-cache-adapter` instance
+            const cache = setupCache({
+                maxAge: 15 * 60 * 1000
+            })
+
+            // Create `axios` instance passing the newly created `cache.adapter`
+            const api = axios.create({
+                adapter: cache.adapter
+            })
+
+            // Send a GET request to some REST api
+            api({
+                url: 'https://fakestoreapi.com/products',
+                method: 'get'
+            }).then(async (response) => {
+                // Do something fantastic with response.data \o/
+                console.log('Request response:', response)
+
+                // Interacting with the store, see `localForage` API.
+                const length = await cache.store.length()
+
+                console.log('Cache store length:', length)
+            })
+
+        }, 
+        methods: {
+            something(e){
+                e.preventDefault()
+            }
+        }, 
     }
 </script>
 
